@@ -10,6 +10,54 @@
     </head>
 
     <body> 
+        
+        <div class="box hot">
+                <span class="sun"></span>
+                <span class="sunx"></span>
+        </div>
+        <div class="box cloudy">
+            <span class="cloud"></span>
+            <span class="cloudx"></span>
+        </div>
+        <div class="box stormy">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span class="snowe"></span>
+            <span class="snowex"></span>
+            <span class="stick"></span>
+            <span class="stick2"></span>
+        </div>
+        <div class="box breezy">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <span class="cloudr"></span>
+        </div>
+        <div class="box night">
+            <span class="moon"></span>
+            <span class="spot1"></span>
+            <span class="spot2"></span>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        
+        </div>
         <h1 id="title">Placeholder</h1>
         <div class="info">
             <h3 id="temperature">Placeholder</h3>
@@ -19,49 +67,7 @@
             <h3 id="humidity">Placeholder</h3>
         </div>
         
-        <script>
-            // get city and api key from settings.json
-            fetch ("settings.json")
-                .then(response => response.json())
-                .then(settings => {
-                    document.getElementById("title").innerHTML = "Current weather in " + settings.city;
-                    document.getElementById("temperature").innerHTML = "beans!";
-                    console.log("https://api.weatherapi.com/v1/current.json?key=" + settings.apiKey + "&q=" + settings.city + "&units=metric");
-                    // get weather data from weatherapi.com
-                    fetch ("https://api.weatherapi.com/v1/current.json?key=" + settings.apiKey + "&q=" + settings.city + "&units=metric")
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            document.getElementById("temperature").innerHTML = data.current.temp_c;
-                            document.getElementById("condition").innerHTML = data.current.condition.text;
-                            document.getElementById("winddirection").innerHTML = data.current.wind_dir;
-                            document.getElementById("windspeed").innerHTML = data.current.wind_kph;
-                            document.getElementById("humidity").innerHTML = data.current.humidity;
-
-                            if (data.current.temp_c < 0) {
-                                document.body.style.backgroundColor = "lightblue";
-                            } else if (data.current.temp_c < 10) {
-                                document.body.style.backgroundColor = "lightgreen";
-                            } else if (data.current.temp_c < 20) {
-                                document.body.style.backgroundColor = "yellow";
-                            } else if (data.current.temp_c < 30) {
-                                document.body.style.backgroundColor = "orange";
-                            } else {
-                                document.body.style.backgroundColor = "red";
-                            }
-
-                            if (data.current.condition = "Light snow") {
-                                document.body.style.backgroundImage = "url('conditionImages/snowy.png')";
-                            }
-
-                            
-                        });
-
-                });
-
-            
-            
-        </script>
+        <script src="weather.js"></script>
 
 
     </body>
